@@ -5,10 +5,12 @@ import java.util.Scanner;
 
 import com.revature.models.User;
 import com.revature.repositories.UserDAO;
+import com.revature.services.UserService;
 
 public class Menu {
 	
 	UserDAO eDAO = new UserDAO();
+	UserService us = new UserService();
 
 	public void displayMenu() {
 		
@@ -29,7 +31,8 @@ public class Menu {
 			System.out.println("LODGING");
 			System.out.println("TRAVEL");
 			System.out.println("FOOD");
-			System.out.println("OTHER");
+			System.out.println("ADD");
+			System.out.println("USERS");
 			System.out.println("EXIT");
 			
 			String input = scan.nextLine();
@@ -68,13 +71,25 @@ public class Menu {
 				System.out.println(food + " is where you ate");
 				break;
 			}
-			case "OTHER":{
-				System.out.println("Please enter the amount");
-				String amount3 = scan.nextLine();
-				System.out.println(amount3 + " to be submitted");
-				System.out.println("Please give a description of reimbursement");
-				String other = scan.nextLine();
-				System.out.println(other + " is the reimbursement");
+			case "ADD":{
+				//we need to prompt the user for the employee's name, and their role_id
+				System.out.println("Enter Employee First Name");
+				String f_name = scan.nextLine();
+				
+				System.out.println("Enter Employee Last Name");
+				String l_name = scan.nextLine();
+				
+				System.out.println("Enter Role Id: 1) Finance Manager 2) Employee");
+				int roleId = scan.nextInt(); //we need nextInt because ID is an int datatype in the database
+				scan.nextLine(); //without any nextLine(), your enter keystroke will be grabbed as the next input
+				//so we need nextLine() in order to actually move to the..... NEXT line!
+				
+				//Given all this information, we'll create a new Employee object to send to the service layer
+				//then the service layer will send it to the repository layer.
+				User newEmployee = new User(f_name, l_name, roleId);
+				
+				//Put the new Employee into the addEmployee() method in the EmployeeService Class
+				us.addEmployee(newEmployee);
 				break;
 			}
 			case "USERS" :{
@@ -85,6 +100,7 @@ public class Menu {
 				for (User e : users) {
 					System.out.println(e);
 			}
+				break;
 			}
 			case "EXIT":{
 				displayMenu = false;
@@ -92,7 +108,7 @@ public class Menu {
 			}
 		
 			}
-			scan.close();
+			
 		}
 		
 		

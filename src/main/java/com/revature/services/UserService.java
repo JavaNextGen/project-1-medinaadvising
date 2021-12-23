@@ -1,9 +1,7 @@
 package com.revature.services;
 
-import java.util.Optional;
-
 import com.revature.models.User;
-
+import com.revature.repositories.UserDAO;
 /**
  * The UserService should handle the processing and retrieval of Users for the ERS application.
  *
@@ -21,10 +19,13 @@ import com.revature.models.User;
  */
 public class UserService {
 
-	/**
-	 *     Should retrieve a User with the corresponding username or an empty optional if there is no match.
-     */
-	public Optional<User> getByUsername(String username) {
-		return Optional.empty();
+UserDAO eDAO = new UserDAO(); //so that I can use the methods from the EmployeeDAO
+	
+	public void addEmployee(User newEmployee) {
+		
+		//take in the Employee object sent from the menu and send it to the EmployeeDAO to be inserted into the database
+		
+		//call the DAO method that inserts the new Employee
+		eDAO.insertEmployee(newEmployee);
 	}
 }

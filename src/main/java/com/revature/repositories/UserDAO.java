@@ -4,6 +4,7 @@ import com.revature.models.User;
 import com.revature.util.ConnectionFactory;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -63,4 +64,33 @@ public List<User> getEmployees() { //This will use SQL SELECT functionality
 		return null; //we add this after the try/catch block, so Java won't yell
 		//(Since there's no guarantee that the try will run)
     }
+public void insertEmployee(User newEmployee) { //This is INSERT functionality 
+	
+	try(Connection conn = ConnectionFactory.getConnection()){
+		
+		//we'll create a SQL statement using parameters to insert a new Employee
+		String sql = "INSERT INTO employees (f_name, l_name, role_id) " //creating a line break for readability
+				    + "VALUES (?, ?, ?); "; //these are parameters!! We have to specify the value of each "?"
+		
+		PreparedStatement ps = conn.prepareStatement(sql); //we use PreparedStatements for SQL commands with variables
+		
+		//use the PreparedStatement objects' methods to insert values into the query's ?s
+		//the values will come from the Employee object we send in.
+		ps.setString(1, newEmployee.getF_name()); //1 is the first ?, 2 is the second, etc.
+		ps.setString(2, newEmployee.getL_name());
+		ps.setInt(3, newEmployee.getRole_id());
+		
+		//this executeUpdate() method actually sends and executes the SQL command we built
+		ps.executeUpdate(); //we use executeUpdate() for inserts, updates, and deletes. 
+		//we use executeQuery() for selects
+		
+		//send confirmation to the console if successul.
+		System.out.println("User " + newEmployee.getF_name() + " created. Welcome aboard!");
+		
+		
+	} catch(SQLException e) {
+		System.out.println("Add user failed! :(");
+		e.printStackTrace();
+	}
+}
 }
