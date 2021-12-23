@@ -1,8 +1,14 @@
 package com.revature;
 
+import java.util.List;
 import java.util.Scanner;
 
+import com.revature.models.User;
+import com.revature.repositories.UserDAO;
+
 public class Menu {
+	
+	UserDAO eDAO = new UserDAO();
 
 	public void displayMenu() {
 		
@@ -71,13 +77,22 @@ public class Menu {
 				System.out.println(other + " is the reimbursement");
 				break;
 			}
+			case "USERS" :{
+				//get the List of employees from the repository layer
+				List<User> users = eDAO.getEmployees();
+				
+				//enhanced for loop to print out the Employees one by one
+				for (User e : users) {
+					System.out.println(e);
+			}
+			}
 			case "EXIT":{
 				displayMenu = false;
 				break;
 			}
-			
+		
 			}
-			
+			scan.close();
 		}
 		
 		
