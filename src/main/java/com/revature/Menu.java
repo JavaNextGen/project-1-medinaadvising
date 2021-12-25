@@ -73,28 +73,37 @@ public class Menu {
 			}
 			case "ADD":{
 				//we need to prompt the user for the employee's name, and their role_id
-				System.out.println("Enter Employee First Name");
+				System.out.println("Enter username");
+				String username = scan.nextLine();
+				
+				System.out.println("Enter password");
+				String password = scan.nextLine();
+				
+				System.out.println("Enter Users First Name");
 				String f_name = scan.nextLine();
 				
-				System.out.println("Enter Employee Last Name");
+				System.out.println("Enter Users Last Name");
 				String l_name = scan.nextLine();
 				
+				System.out.println("Enter email");
+				String user_email = scan.nextLine();
+				
 				System.out.println("Enter Role Id: 1) Finance Manager 2) Employee");
-				int roleId = scan.nextInt(); //we need nextInt because ID is an int datatype in the database
+				int user_roles_id = scan.nextInt(); //we need nextInt because ID is an int datatype in the database
 				scan.nextLine(); //without any nextLine(), your enter keystroke will be grabbed as the next input
 				//so we need nextLine() in order to actually move to the..... NEXT line!
 				
 				//Given all this information, we'll create a new Employee object to send to the service layer
 				//then the service layer will send it to the repository layer.
-				User newEmployee = new User(f_name, l_name, roleId);
+				User newUser = new User(username, password, f_name, l_name, user_email, user_roles_id);
 				
 				//Put the new Employee into the addEmployee() method in the EmployeeService Class
-				us.addEmployee(newEmployee);
+				us.addUser(newUser);
 				break;
 			}
 			case "USERS" :{
 				//get the List of employees from the repository layer
-				List<User> users = eDAO.getEmployees();
+				List<User> users = eDAO.getUsers();
 				
 				//enhanced for loop to print out the Employees one by one
 				for (User e : users) {
