@@ -1,36 +1,48 @@
 package com.revature.models;
 
-/**
- * Reimbursements within the ERS application transition through the following statuses:
- * <ul>
- *     <li>Pending</li>
- *     <li>Approved</li>
- *     <li>Denied</li>
- * </ul>
- *
- * Once reimbursements are processed, their final status cannot be changed.
- * A new reimbursement must be submitted.
- *
- * @author Center of Excellence
- */
-public enum Status {
 
-    PENDING {
-        @Override
-        public String toString() {
-            return "Pending";
-        }
-    },
-    APPROVED {
-        @Override
-        public String toString() {
-            return "Approved";
-        }
-    },
-    DENIED {
-        @Override
-        public String toString() {
-            return "Denied";
-        }
+public class Status {
+	
+	private int reimb_status_id;
+    private String reimb_status;
+   
+    
+    
+    //boilerplate code below-----------------------------------
+    
+    //no args
+    public Status() {
+        super();
+        // TODO Auto-generated constructor stub
     }
+
+    //all args
+    public Status(int reimb_status_id, String reimb_status) {
+        super();
+        this.reimb_status_id = reimb_status_id;
+        this.reimb_status = reimb_status;
+      
+    }
+    @Override
+    public String toString() {
+        return "Status [reimb_status_id = " + reimb_status_id + ", reimb_status =" + reimb_status + "]";
+    }
+
+    public int getReimb_status_id() {
+        return reimb_status_id;
+    }
+
+    public void setRole_id(int reimb_status_id) {
+        this.reimb_status_id = reimb_status_id;
+    }
+
+    public String getReimb_status() {
+        return reimb_status;
+    }
+
+    public void setUser_role(String reimb_status) {
+        this.reimb_status = reimb_status;
+    }
+
 }
+

@@ -39,10 +39,10 @@ public class UserServiceTest {
 
     @Test
     public void testGetByUsernamePassesWhenUsernameExists() {
-        when(userDAO.getByUsername(anyString())).thenReturn(Optional.of(GENERIC_EMPLOYEE_1));
+        when(userDAO.getUsername(anyString())).thenReturn(Optional.of(GENERIC_EMPLOYEE_1));
 
         assertEquals(Optional.of(GENERIC_EMPLOYEE_1), userService.getByUsername(GENERIC_EMPLOYEE_1.getUsername()));
 
-        verify(userDAO).getByUsername(GENERIC_EMPLOYEE_1.getUsername());
+        verify(userDAO).getUsername(GENERIC_EMPLOYEE_1.getUsername());
     }
 }
