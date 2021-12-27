@@ -36,8 +36,8 @@ public class Menu {
 			System.out.println("1 -> USERS");
 			System.out.println("2 -> ADD USER");
 			System.out.println("3 -> REIMBURSEMENT REQUEST");
-			System.out.println("4 -> REIMBURSEMENT STATUS");
-			System.out.println("5 -> FINANCE MANAGER APPROVAL");
+			System.out.println("4 -> USERS BY ID");
+			System.out.println("5 -> USERS BY ROLE");
 			System.out.println("6 -> EXIT");
 			
 			String input = scan.nextLine();
@@ -46,21 +46,32 @@ public class Menu {
 			switch(input) {
 			
 			case "5":{
-				System.out.println("Please enter the amount");
-				String amount = scan.nextLine();
-				System.out.println(amount + " to be submitted");
-				System.out.println("Please give the name of where you lodged");
-				String lodge = scan.nextLine();
-				System.out.println(lodge + " is where you lodged");
-				break;
+				System.out.println("Enter User Role to Search: (Case Sensitive! e.g. \"Employee\")");
+				String roleInput = scan.nextLine(); //get user's input for Role to search by
+				
+				List<User> users = us.getUserByRole(roleInput); //get the List of Employees from the dao
+				
+				for(User e : users)
+				{
+					System.out.println(e); //print them out one by one via the enhanced for loop
+				}
+				break;			
 			}
 			case "4":{
-				System.out.println("Please enter the amount");
-				String amount1 = scan.nextLine();
-				System.out.println(amount1 + " to be submitted");
-				System.out.println("Please give the name of city and state you traveled");
-				String travel = scan.nextLine();
-				System.out.println(travel + " is where you traveled");
+				System.out.println("What user id would you like to search for?");
+				
+				int idInput = scan.nextInt(); //get user's input for id
+				scan.nextLine(); //we still need nextLine so that we can move to the next line for more input
+				
+				//what if the user inputs a String? program crashes
+				//up to you to polish your project a bit and add some foolproofing mechanisms
+				
+				List<User> users = us.getUserById(idInput);
+				
+				for(User use : users) {
+					System.out.println(use);
+				}
+				
 				break;
 			}
 			case "3":{
