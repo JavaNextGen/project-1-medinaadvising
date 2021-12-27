@@ -105,4 +105,26 @@ public void insertReimbursement(Reimbursement newReimbursement) { //This is INSE
 		e.printStackTrace();
 	}
 }
+
+public void updateStatus(String reimb_status) {
+	
+	try(Connection conn = ConnectionFactory.getConnection()){
+		
+		String sql = "update reimbursement_status set reimb_status = ?";
+		
+		PreparedStatement ps = conn.prepareStatement(sql);
+		
+		
+		ps.setString(1, reimb_status);
+		
+		ps.executeUpdate();
+		
+		System.out.println(reimb_status + " status has been updated to: " + reimb_status);
+		
+	} catch (SQLException e) {
+		System.out.println("You can't update status!!!");
+		e.printStackTrace();
+	}
+
+}
 }

@@ -12,14 +12,19 @@ import java.util.List;
 
 public class ReimbursementService {
 
-ReimbursementDAO eDAO1 = new ReimbursementDAO(); 
+ReimbursementDAO rDAO = new ReimbursementDAO(); 
 	
 	public void addReimbursement(Reimbursement newReimbursement) {
 		
 		//take in the Reimbursement object sent from the menu and send it to the ReimbursementDAO to be inserted into the database
 		
 		//call the DAO method that inserts the new Reimbursement
-		eDAO1.insertReimbursement(newReimbursement);
+		rDAO.insertReimbursement(newReimbursement);
+	}
+	public void updateStatus(String reimb_status) {
+		
+		rDAO.updateStatus(reimb_status);
+		
 	}
     
 }

@@ -14,7 +14,7 @@ public class Menu {
 	
 	UserDAO eDAO = new UserDAO();
 	UserService us = new UserService();
-	ReimbursementDAO eDAO1 = new ReimbursementDAO();
+	ReimbursementDAO rDAO = new ReimbursementDAO();
 	ReimbursementService ri = new ReimbursementService();
 
 	public void displayMenu() {
