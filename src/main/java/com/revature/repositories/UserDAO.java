@@ -199,5 +199,66 @@ public List<User> getUserByRole(String role) {
 	}
 	return null;
 }
+public User updateUser(User user) {
+	try(Connection conn  = ConnectionFactory.getConnection()) {
+		String sql = "UPDATE users SET username= ?, password = ?, f_name = ?, l_name = ?, user_email = ? WHERE users_id  = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		
+		ps.setString(1, user.getUsername());
+		ps.setString(2, user.getPassword());
+		ps.setString(3, user.getF_name());
+		ps.setString(4, user.getL_name());
+		ps.setString(5, user.getUser_email());
+		ps.setInt(6, user.getUsers_id());
+		
+		ps.executeUpdate();
+		
+		String sqlCheck = "SELECT * FROM users WHERE users_id = ?";
+		PreparedStatement psc = conn.prepareStatement(sqlCheck);
+		
+		psc.setInt(1, user.getUsers_id());
+		
+		ResultSet rs = psc.executeQuery();
+		
+		while(rs.next()) {
+		
+		User updatedUser = new User(
+					rs.getInt("users_id"),
+					rs.getString("username"),
+					rs.getString("password"),
+					rs.getString("f_name"),
+					rs.getString("l_name"),
+					rs.getString("user_email"),
+					rs.getInt("user_roles_id")
+				);
+		return updatedUser;
+		}
+		
+		
+		
+		} catch(SQLException e) {
+			System.out.println("Updating has failed.");
+			e.printStackTrace();
+		}
+	return null;
+}
+
+	public boolean deleteUser(int id) {
+		try(Connection conn  = ConnectionFactory.getConnection()) {
+		String sql = "delete from users WHERE users_id  = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+	
+		ps.setInt(1, id);
+		
+		ps.executeUpdate();
+		
+		return true;
+		
+		} catch(SQLException e) {
+			System.out.println("Deleting has failed.");
+			e.printStackTrace();
+			return false;
+		}
+}
 
 }

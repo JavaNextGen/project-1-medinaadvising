@@ -10,9 +10,18 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class ReimbursementService {
+	public class ReimbursementService {
 
-ReimbursementDAO rDAO = new ReimbursementDAO(); 
+	ReimbursementDAO rDAO = new ReimbursementDAO(); 
+
+	public List<Reimbursement> getReimbursement() {
+	
+	//get the List of Employees by calling the DAO method that selects them from the database
+	List<Reimbursement> reimbursement = rDAO.getReimbursement();
+	
+	//return the list of employees
+	return reimbursement;
+}
 	
 	public void addReimbursement(Reimbursement newReimbursement) {
 		
@@ -21,10 +30,19 @@ ReimbursementDAO rDAO = new ReimbursementDAO();
 		//call the DAO method that inserts the new Reimbursement
 		rDAO.insertReimbursement(newReimbursement);
 	}
-	public void updateStatus(String reimb_status) {
+	public Status updateStatus(Status reimb_status) {
 		
 		rDAO.updateStatus(reimb_status);
 		
+		return reimb_status;
+		
+	}
+
+	public List<Reimbursement> getReimbursementById(int id) {
+		
+		List<Reimbursement> reimbById= rDAO.getReimbursementById(id);
+		
+		return reimbById;
 	}
     
 }

@@ -23,18 +23,26 @@ UserDAO eDAO = new UserDAO(); //so that I can use the methods from the EmployeeD
 		//call the DAO method that inserts the new Employee
 		eDAO.insertUser(newUser);
 	}
-	public List<User> getUserById(int idInput) {
+	public List<User> getUserById(int id) {
 		
-		List<User> user= eDAO.getUserById(idInput);
+		List<User> user= eDAO.getUserById(id);
 		
 		return user;
 	}
 
-	public List<User> getUserByRole(String roleInput) {
+	public List<User> getUserByRole(String role) {
 		
-		List<User> users = eDAO.getUserByRole(roleInput);
+		List<User> users = eDAO.getUserByRole(role);
 		
 		return users;
 	}
 	
+	public User updateUser(User user) {
+		return eDAO.updateUser(user);
+		
+	}
+	
+	public boolean deleteUser(int users_id) {
+		return eDAO.deleteUser(users_id);
+	}
 }

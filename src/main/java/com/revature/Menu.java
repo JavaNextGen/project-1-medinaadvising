@@ -38,7 +38,8 @@ public class Menu {
 			System.out.println("3 -> REIMBURSEMENT REQUEST");
 			System.out.println("4 -> USERS BY ID");
 			System.out.println("5 -> USERS BY ROLE");
-			System.out.println("6 -> EXIT");
+			System.out.println("6 -> UPDATE STATUS");
+			System.out.println("7 -> EXIT");
 			
 			String input = scan.nextLine();
 			
@@ -141,7 +142,14 @@ public class Menu {
 			}
 				break;
 			}
-			case "6":{
+			
+			case "6" :{
+				System.out.println("Would you like to Approve or Deny: 2) APPROVE 3) DENY");
+				int reimb_status = scan.nextInt();
+				scan.nextLine();
+				break;
+			}
+			case "7":{
 				displayMenu = false;
 				break;
 			}

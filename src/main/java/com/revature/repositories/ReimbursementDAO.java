@@ -106,25 +106,99 @@ public void insertReimbursement(Reimbursement newReimbursement) { //This is INSE
 	}
 }
 
-public void updateStatus(String reimb_status) {
+public void updateStatus(Status reimb_status) {
 	
 	try(Connection conn = ConnectionFactory.getConnection()){
 		
-		String sql = "update reimbursement_status set reimb_status = ?";
+		String sql = "update reimbursement_status set reimb_status = ? where reimb_id = ?";
 		
 		PreparedStatement ps = conn.prepareStatement(sql);
-		
-		
-		ps.setString(1, reimb_status);
+		ps.setString(1, reimb_status.getReimb_status());
+		ps.setInt(2, reimb_status.getReimb_status_id());
 		
 		ps.executeUpdate();
 		
-		System.out.println(reimb_status + " status has been updated to: " + reimb_status);
+		String sqlCheck = "SELECT * FROM reimbursement WHERE reimb_id = ?";
+		PreparedStatement psc = conn.prepareStatement(sqlCheck);
+		
+		psc.setInt(1, reimb_status.getReimb_status_id());
+		
+		ResultSet rs = psc.executeQuery();
+		
+		while(rs.next()) {
+		
+		Reimbursement updatedStatus = new Reimbursement(
+				rs.getInt("reimb_id"),
+				rs.getDouble("reimb_amount"),
+				rs.getTimestamp("reimb_submitted"),
+				rs.getTimestamp("reimb_resolved"),
+				rs.getString("reimb_description"),
+				rs.getInt("reimb_receipt"),
+				rs.getInt("reimb_author"),
+				rs.getInt("reimb_resolver"),
+				rs.getInt("reimb_status_id"),
+				rs.getInt("reimb_type_id")
+				);
+		
+		}
+		
+		
+		
+		} catch(SQLException e) {
+			System.out.println("Updating has failed.");
+			e.printStackTrace();
+		}
+	return;
+}
+public List<Reimbursement> getReimbursementById(int id) {
+	
+	try(Connection conn = ConnectionFactory.getConnection()) {
+		
+		ResultSet rs = null;
+		
+		String sql = "select * from reimbursement where reimb_author = ?";
+		
+		//when we need parameters we need to use a PREPARED Statement, as opposed to a Statement (seen above)
+		PreparedStatement ps = conn.prepareStatement(sql); //prepareStatment() as opposed to createStatment()
+		
+		//insert the methods argument (int id) as the first (and only) variable in our SQL query
+		ps.setInt(1, id); //the 1 here is referring to the first parameter (?) found in our SQL String
+		
+		rs = ps.executeQuery();
+		
+		//create an empty List to be filled with the data from the database
+		List<Reimbursement> reimbursementList = new ArrayList<>();
+		
+//we technically don't need this while loop since we're only getting one result back... see if you can refactor :)
+		while(rs.next()) { //while there are results in the result set...
+			
+		//Use the all args Constructor to create a new Employee object from each returned row...
+		Reimbursement r = new Reimbursement(
+				//we want to use rs.getXYZ for each column in the record
+				rs.getInt("reimb_id"),
+				rs.getDouble("reimb_amount"),
+				rs.getTimestamp("reimb_submitted"),
+				rs.getTimestamp("reimb_resolved"),
+				rs.getString("reimb_description"),
+				rs.getInt("reimb_receipt"),
+				rs.getInt("reimb_author"),
+				rs.getInt("reimb_resolver"),
+				rs.getInt("reimb_status_id"),
+				rs.getInt("reimb_type_id")
+				);
+		
+		//and populate the ArrayList with each new Employee object
+		reimbursementList.add(r); //e is the new Employee object we created above
+		}
+		
+		//when there are no more results in the ResultSet the while loop will break...
+		//return the populated List of Employees
+		return reimbursementList;
 		
 	} catch (SQLException e) {
-		System.out.println("You can't update status!!!");
+		System.out.println("Something went wrong with your database!"); 
 		e.printStackTrace();
 	}
-
+	return null;
 }
 }

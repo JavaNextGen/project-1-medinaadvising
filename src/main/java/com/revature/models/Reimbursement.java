@@ -38,7 +38,10 @@ public class Reimbursement {
     }
     
     public Reimbursement(double reimb_amount, String reimb_description, int reimb_receipt, int reimb_type_id) {
-		
+    	 this.reimb_amount = reimb_amount;
+    	 this.reimb_description = reimb_description;
+    	 this.reimb_receipt = reimb_receipt;
+    	 this.reimb_type_id = reimb_type_id;
 	}
 
 	@Override
