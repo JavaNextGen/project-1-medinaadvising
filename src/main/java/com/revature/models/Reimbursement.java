@@ -16,6 +16,7 @@ public class Reimbursement {
     private int reimb_resolver;
     private int reimb_status;
     private int reimb_type_id;
+    private int reimb_status_id;
     
 
     public Reimbursement() {
@@ -123,11 +124,21 @@ public class Reimbursement {
         this.reimb_type_id = reimb_type_id;
     }
     
+    public int getReimb_status_id() {
+		// TODO Auto-generated method stub
+		return reimb_status;
+	}
+
+	public void setReimb_status_id(int reimb_status_id) {
+		this.reimb_status_id = reimb_status_id;
+	}
 
     @Override
     public int hashCode() {
         return Objects.hash(reimb_id, reimb_amount, reimb_submitted, reimb_resolved, reimb_description, reimb_receipt, reimb_author, reimb_resolver, reimb_status, reimb_type_id);
     }
+
+	
 
    
     }

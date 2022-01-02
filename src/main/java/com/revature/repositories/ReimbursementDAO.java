@@ -79,8 +79,8 @@ public void insertReimbursement(Reimbursement newReimbursement) { //This is INSE
 	try(Connection conn = ConnectionFactory.getConnection()){
 		
 		//we'll create a SQL statement using parameters to insert a new Employee
-		String sql = "INSERT INTO reimbursement (reimb_amount, reimb_description, reimb_receipt, reimb_type_id) " //creating a line break for readability
-				    + "VALUES (?, ?, ?, ?); "; //these are parameters!! We have to specify the value of each "?"
+		String sql = "INSERT INTO reimbursement (reimb_amount, reimb_description, reimb_receipt, reimb_type_id, reimb_author) " //creating a line break for readability
+				    + "VALUES (?, ?, ?, ?, ?); "; //these are parameters!! We have to specify the value of each "?"
 		
 		PreparedStatement ps = conn.prepareStatement(sql); //we use PreparedStatements for SQL commands with variables
 		
@@ -90,6 +90,7 @@ public void insertReimbursement(Reimbursement newReimbursement) { //This is INSE
 		ps.setString(2, newReimbursement.getReimb_description());
 		ps.setInt(3, newReimbursement.getReimb_receipt()); //1 is the first ?, 2 is the second, etc.
 		ps.setInt(4, newReimbursement.getReimb_type_id());
+		ps.setInt(5, newReimbursement.getReimb_author());
 		
 		
 		//this executeUpdate() method actually sends and executes the SQL command we built
@@ -106,22 +107,22 @@ public void insertReimbursement(Reimbursement newReimbursement) { //This is INSE
 	}
 }
 
-public void updateStatus(Status reimb_status) {
+public void updateStatus(Reimbursement reimb_status_id) {
 	
 	try(Connection conn = ConnectionFactory.getConnection()){
 		
-		String sql = "update reimbursement_status set reimb_status = ? where reimb_id = ?";
+		String sql = "update reimbursement set reimb_status_id = ? where reimb_id = ?";
 		
 		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setString(1, reimb_status.getReimb_status());
-		ps.setInt(2, reimb_status.getReimb_status_id());
+		ps.setInt(1, reimb_status_id.getReimb_status_id());
+		ps.setInt(2, reimb_status_id.getReimb_id());
 		
 		ps.executeUpdate();
 		
 		String sqlCheck = "SELECT * FROM reimbursement WHERE reimb_id = ?";
 		PreparedStatement psc = conn.prepareStatement(sqlCheck);
 		
-		psc.setInt(1, reimb_status.getReimb_status_id());
+		psc.setInt(1, reimb_status_id.getReimb_status_id());
 		
 		ResultSet rs = psc.executeQuery();
 		

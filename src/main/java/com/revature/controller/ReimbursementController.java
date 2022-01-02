@@ -55,15 +55,15 @@ public class ReimbursementController {
 		if(ctx.req.getSession() !=null) {
 			
 			
-			int reimb_status_id = Integer.parseInt(ctx.pathParam("reimb_status_id"));
+			int reimb_id = Integer.parseInt(ctx.pathParam("reimb_id"));
 			
 			Gson gson = new Gson();
 			
 			String body = ctx.body();
 			
-			Status status = gson.fromJson(body, Status.class);
+			Reimbursement status = gson.fromJson(body, Reimbursement.class);
 			
-			Status UpdateStatus = rs.updateStatus(status);
+			List<Reimbursement> UpdateStatus = rs.getReimbursementById(reimb_id);
 			
 			String JSONStatus = gson.toJson(UpdateStatus);
 			

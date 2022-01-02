@@ -30,11 +30,11 @@ import java.util.List;
 		//call the DAO method that inserts the new Reimbursement
 		rDAO.insertReimbursement(newReimbursement);
 	}
-	public Status updateStatus(Status reimb_status) {
+	public Reimbursement updateStatus(Reimbursement reimb_status_id) {
 		
-		rDAO.updateStatus(reimb_status);
+		rDAO.updateStatus(reimb_status_id);
 		
-		return reimb_status;
+		return reimb_status_id;
 		
 	}
 
