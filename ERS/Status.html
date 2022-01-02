@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,500,700|Oswald:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../ERS/Resources/css/registerstyle.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Reimbursement Status</h1>
+    </div>
+    <section class="user_details">
+        <h2>Reimbursement Status: Approve or Deny</h2>
+        <form>
+            <div>
+                <label for="reimbursement_ID">Reimbursement ID:</label>
+                <input type="text" id="reimbursement_ID" name="reimbursment_ID" placeholder= "Reimbursement ID"><br>    
+            </div>
+            <div>
+                <label for="type">Update Status:</label>
+                <select name = "type" id="type">
+                    <option value="PENDING">PENDING</option>
+                    <option value="APPROVE">APPROVE</option>
+                    <option value="DENY">DENIED</option>
+                </select><br>    
+            </div>
+            <div id= "submit">
+                <!--Register Button-->
+                 <input type="submit" class ="button" value="Submit" />    
+            </div>
+          </form>
+
+    </section>
+</body>
+</html>

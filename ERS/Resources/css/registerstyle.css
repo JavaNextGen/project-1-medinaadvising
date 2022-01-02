@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+    background-color:bisque;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+  }
+
+  .header {
+    background-image: url("../images/pexels-fauxels-3184398.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 520px;
+    width: 100%;
+    margin-bottom: 100px;
+    
+  }
+
+  h2{
+    font-size: 30px ;
+    font-family: 'Times New Roman', Times, serif;
+    padding-left: 100px;
+  }
+
+  .header h1{
+    background-color: #05A8AA;
+    color: #FFF;
+    font-family: 'Oswald', sans-serif;
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 40px;
+    width: 68%;
+    padding: 20px;
+    margin: 0 auto; 
+    text-align: center;
+  }
+  .user_details{
+    text-align: center;
+}
+form div {
+    margin-bottom: 10px;
+  }
+  label {
+    display: inline-block;
+    width: 300px;
+    text-align: right;
+  }
+  input, select {
+      width: 250px;
+  }
+  .button {
+    border-radius: 4px;
+    background-color: #05A8AA;
+    color: white;
+    display: inline-block;
+    font-weight: 700;
+    width: 100px;
+    padding: 10px;
+    margin: 10px 10px;
+    border: 1px solid blue;
+  }
+  
+  .button:hover {
+    background-color: #05A8AA;
+    border: 1px solid #05A8AA;
+    color: #FFF;
+  }
+  a {
+    text-decoration: none;
+  }
