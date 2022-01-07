@@ -1,5 +1,6 @@
 package com.revature.models;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Objects;
 
@@ -8,8 +9,7 @@ import org.postgresql.util.PGbytea;
 public class Reimbursement {
 	private int reimb_id;
 	private double reimb_amount;
-	private Timestamp reimb_submitted;
-    private Timestamp reimb_resolved;
+	private Date reimb_submitted;
     private String reimb_description;
     private int reimb_receipt;
     private int reimb_author;
@@ -23,12 +23,11 @@ public class Reimbursement {
         super();
     }
 
-    public Reimbursement(int reimb_id, double reimb_amount, Timestamp reimb_submitted, Timestamp reimb_resolved, String reimb_description, int reimb_receipt, int reimb_author, int reimb_resolver, int reimb_status, int reimb_type_id) {
+    public Reimbursement(int reimb_id, double reimb_amount, Date reimb_submitted, String reimb_description, int reimb_receipt, int reimb_author, int reimb_resolver, int reimb_status, int reimb_type_id) {
         super();
         this.reimb_id = reimb_id;
         this.reimb_amount = reimb_amount;
         this.reimb_submitted = reimb_submitted;
-        this.reimb_resolved = reimb_resolved;
         this.reimb_description = reimb_description;
         this.reimb_receipt = reimb_receipt;
         this.reimb_author = reimb_author;
@@ -47,7 +46,7 @@ public class Reimbursement {
 
 	@Override
     public String toString() {
-        return "Reimbursement{reimb_id = " + reimb_id + ", reimb_amount = " + reimb_amount + ", reimb_submitted = " + reimb_submitted +", reimb_resolved = " + reimb_resolved +", reimb_description = " + reimb_description +", reimb_receipt = " + reimb_receipt +", reimb_author = " + reimb_author + ", reimb_resolver = " + reimb_resolver + ", reimb_status = " + reimb_status + ", reimb_type_id = " + reimb_type_id + "}";
+        return "Reimbursement{reimb_id = " + reimb_id + ", reimb_amount = " + reimb_amount + ", reimb_submitted = " + reimb_submitted +", reimb_description = " + reimb_description +", reimb_receipt = " + reimb_receipt +", reimb_author = " + reimb_author + ", reimb_resolver = " + reimb_resolver + ", reimb_status = " + reimb_status + ", reimb_type_id = " + reimb_type_id + "}";
     }
     public int getReimb_id() {
         return reimb_id;
@@ -63,21 +62,14 @@ public class Reimbursement {
     public void setReimb_amount(double reimb_amount) {
         this.reimb_amount = reimb_amount;
     }
-    public Timestamp getReimb_submitted() {
+    public Date getReimb_submitted() {
         return reimb_submitted;
     }
 
-    public void setReimb_submitted(Timestamp reimb_submitted) {
+    public void setReimb_submitted(Date reimb_submitted) {
         this.reimb_submitted = reimb_submitted;
     }
 
-    public Timestamp getReimb_resolved() {
-        return reimb_resolved;
-    }
-
-    public void setReimb_resolved(Timestamp reimb_resolved) {
-        this.reimb_resolved = reimb_resolved;
-    }
 
     public String getReimb_description() {
         return reimb_description;
@@ -135,7 +127,7 @@ public class Reimbursement {
 
     @Override
     public int hashCode() {
-        return Objects.hash(reimb_id, reimb_amount, reimb_submitted, reimb_resolved, reimb_description, reimb_receipt, reimb_author, reimb_resolver, reimb_status, reimb_type_id);
+        return Objects.hash(reimb_id, reimb_amount, reimb_submitted, reimb_description, reimb_receipt, reimb_author, reimb_resolver, reimb_status, reimb_type_id);
     }
 
 	
