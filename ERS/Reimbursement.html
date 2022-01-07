@@ -9,12 +9,27 @@
     <link rel="stylesheet" type="text/css" href="../ERS/Resources/css/registerstyle.css">
 </head>
 <body>
+    <header>
+        <div class="topnav">
+          <a class="active" href="index.html">Home</a>
+          <a href="Users.html">All Users</a>
+          <a href="Reimbursement.html">Submit Reimbursement</a>
+          <a href="AllReimb.html">Reimbursements</a>
+          <a href="MyReimbursement.html">My Reimbursements</a>
+          <a href="Register.html">New User</a>
+        </div>
+      </header>
+      <div class="content">
     <div class="header">
         <h1>Submit Reimbursement</h1>
     </div>
     <section class="user_details">
         <h2>Please Enter Your Reimbursement Information Below</h2>
         <form>
+            <div>
+                <label for="user_id">User ID:</label>
+                <input type="text" id="user_id" name="user_id" placeholder= "User ID"><br>    
+            </div>
             <div>
                 <label for="reimbursement">Reimbursement Amount:</label>
                 <input type="text" id="reimbursement" name="reimbursment" placeholder= "Reimbursement Amount"><br>    
@@ -24,17 +39,21 @@
                 <input type="text" id="description" name="description" placeholder= "Description"><br>    
             </div>
             <div>
-                <label for="fileselect">Upload Reimbursement Receipt:</label>
-                <input type="file" id="fileselect" name="fileselect" placeholder= "upload receipt"><br>    
+                <label for="receipt">Have Reimbursement Receipt:</label>
+                <select name = "receipt" id="receipt">
+                    <option value= "1">Yes</option>
+                    <option value= "2">No</option>
+                </select><br>    
             </div>
             <div>
                 <label for="type">Reimbursement Type:</label>
                 <select name = "type" id="type">
-                    <option value="LODGING">LODGING</option>
-                    <option value="TRAVEL">TRAVEL</option>
-                    <option value="FOOD">FOOD</option>
-                    <option value="OTHER">OTHER</option>
-                </select><br>    
+                    <option value="1">LODGING</option>
+                    <option value="2">TRAVEL</option>
+                    <option value="3">FOOD</option>
+                    <option value="4">OTHER</option>
+                </select><br> 
+                   
             </div>
             <div id= "submit">
                 <!--Register Button-->
@@ -43,5 +62,7 @@
           </form>
 
     </section>
+</div>
+    <script src="Reimbursement.js"></script>
 </body>
 </html>
