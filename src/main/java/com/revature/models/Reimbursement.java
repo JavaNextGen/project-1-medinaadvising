@@ -9,9 +9,10 @@ import org.postgresql.util.PGbytea;
 public class Reimbursement {
 	private int reimb_id;
 	private double reimb_amount;
-	private Date reimb_submitted;
+	private String reimb_submitted;
     private String reimb_description;
-    private int reimb_receipt;
+    private String reimb_receipt;
+    private String reimb_type;
     private int reimb_author;
     private int reimb_resolver;
     private int reimb_status;
@@ -23,7 +24,7 @@ public class Reimbursement {
         super();
     }
 
-    public Reimbursement(int reimb_id, double reimb_amount, Date reimb_submitted, String reimb_description, int reimb_receipt, int reimb_author, int reimb_resolver, int reimb_status, int reimb_type_id) {
+    public Reimbursement(int reimb_id, double reimb_amount, String reimb_submitted, String reimb_description, String reimb_receipt, String reimb_type, int reimb_author, int reimb_resolver, int reimb_status, int reimb_type_id) {
         super();
         this.reimb_id = reimb_id;
         this.reimb_amount = reimb_amount;
@@ -37,11 +38,11 @@ public class Reimbursement {
         
     }
     
-    public Reimbursement(double reimb_amount, String reimb_description, int reimb_receipt, int reimb_type_id) {
+    public Reimbursement(double reimb_amount, String reimb_description, String reimb_receipt, String reimb_type) {
     	 this.reimb_amount = reimb_amount;
     	 this.reimb_description = reimb_description;
     	 this.reimb_receipt = reimb_receipt;
-    	 this.reimb_type_id = reimb_type_id;
+    	 this.reimb_type = reimb_type;
 	}
 
 	@Override
@@ -62,11 +63,11 @@ public class Reimbursement {
     public void setReimb_amount(double reimb_amount) {
         this.reimb_amount = reimb_amount;
     }
-    public Date getReimb_submitted() {
+    public String getReimb_submitted() {
         return reimb_submitted;
     }
 
-    public void setReimb_submitted(Date reimb_submitted) {
+    public void setReimb_submitted(String reimb_submitted) {
         this.reimb_submitted = reimb_submitted;
     }
 
@@ -79,11 +80,11 @@ public class Reimbursement {
         this.reimb_description = reimb_description;
     }
 
-    public int getReimb_receipt() {
+    public String getReimb_receipt() {
         return reimb_receipt;
     }
 
-    public void setReimb_receipt(int reimb_receipt) {
+    public void setReimb_receipt(String reimb_receipt) {
         this.reimb_receipt = reimb_receipt;
     }
     public int getReimb_author() {
@@ -129,6 +130,14 @@ public class Reimbursement {
     public int hashCode() {
         return Objects.hash(reimb_id, reimb_amount, reimb_submitted, reimb_description, reimb_receipt, reimb_author, reimb_resolver, reimb_status, reimb_type_id);
     }
+
+	public String getReimb_type() {
+		return reimb_type;
+	}
+
+	public void setReimb_type(String reimb_type) {
+		this.reimb_type = reimb_type;
+	}
 
 	
 

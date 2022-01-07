@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,61 +9,66 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,500,700|Oswald:300,400,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../ERS/Resources/css/registerstyle.css">
 </head>
+
 <body>
     <header>
         <div class="topnav">
-          <a class="active" href="index.html">Home</a>
-          <a href="Users.html">All Users</a>
-          <a href="Reimbursement.html">Submit Reimbursement</a>
-          <a href="AllReimb.html">Reimbursements</a>
-          <a href="MyReimbursement.html">My Reimbursements</a>
-          <a href="Register.html">New User</a>
+            <a class="active" href="index.html">Home</a>
+            <a href="Users.html">All Users</a>
+            <a href="Reimbursement.html">Submit Reimbursement</a>
+            <a href="AllReimb.html">Reimbursements</a>
+            <a href="MyReimbursement.html">My Reimbursements</a>
+            <a href="Register.html">New User</a>
         </div>
-      </header>
-      <div class="content">
-    <div class="header">
-        <h1>Submit Reimbursement</h1>
-    </div>
-    <section class="user_details">
-        <h2>Please Enter Your Reimbursement Information Below</h2>
-        <form>
-            <div>
-                <label for="user_id">User ID:</label>
-                <input type="text" id="user_id" name="user_id" placeholder= "User ID"><br>    
-            </div>
-            <div>
-                <label for="reimbursement">Reimbursement Amount:</label>
-                <input type="text" id="reimbursement" name="reimbursment" placeholder= "Reimbursement Amount"><br>    
-            </div>
-            <div>
-                <label for="description">Reimbursement Description:</label>
-                <input type="text" id="description" name="description" placeholder= "Description"><br>    
-            </div>
-            <div>
-                <label for="receipt">Have Reimbursement Receipt:</label>
-                <select name = "receipt" id="receipt">
-                    <option value= "1">Yes</option>
-                    <option value= "2">No</option>
-                </select><br>    
-            </div>
-            <div>
-                <label for="type">Reimbursement Type:</label>
-                <select name = "type" id="type">
-                    <option value="1">LODGING</option>
-                    <option value="2">TRAVEL</option>
-                    <option value="3">FOOD</option>
-                    <option value="4">OTHER</option>
-                </select><br> 
-                   
-            </div>
-            <div id= "submit">
-                <!--Register Button-->
-                 <input type="submit" class ="button" value="Submit" />    
-            </div>
-          </form>
+    </header>
+    <div class="content">
+        <div class="header">
+            <h1>Submit Reimbursement</h1>
+        </div>
+        <section class="user_details">
+            <h2>Please Enter Your Reimbursement Information Below</h2>
+            <form>
+                <div>
+                    <label for="reimb_amount">Reimbursement Amount:</label>
+                    <input type="text" id="reimb_amount" name="reimb_amount" placeholder="Reimbursement Amount"><br>
+                </div>
+                <div>
+                    <label for="reimb_submitted">Submitted Date:</label>
+                    <input type="text" id="reimb_submitted" name="submitted" placeholder="Enter Date"><br>
+                </div>
+                <div>
+                    <label for="reimb_description">Reimbursement Description:</label>
+                    <input type="text" id="reimb_description" name="reimb_description" placeholder="Description"><br>
+                </div>
+                <div>
+                    <label for="reimb_receipt">Have Reimbursement Receipt:</label>
+                    <select name="reimb_receipt" id="reimb_receipt">
+                        <option value="1">Yes</option>
+                        <option value="2">No</option>
+                    </select><br>   
+                </div>
+                <div>
+                    <label for="reimb_type">Reimbursement Type:</label>
+                    <select name="reimb_type" id="reimb_type">
+                        <option value="1">LODGING</option>
+                        <option value="2">TRAVEL</option>
+                        <option value="3">FOOD</option>
+                        <option value="4">OTHER</option>
+                    </select><br>
+                <div>
+                        <label for="reimb_author">User ID:</label>
+                        <input type="text" id="reimb_author" name="reimb_author" placeholder="User ID"><br>
+                </div> 
+                </div>
+                <div id="submit">
+                    <!--Register Button-->
+                    <button id="reimbButton" class="button">Submit</button>
+                </div>
+            </form>
 
-    </section>
-</div>
+        </section>
+    </div>
     <script src="Reimbursement.js"></script>
 </body>
+
 </html>

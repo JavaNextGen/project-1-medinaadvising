@@ -47,9 +47,10 @@ public List<Reimbursement> getReimbursement() { //This will use SQL SELECT funct
 						//we want to use rs.get for each column in the record
 						rs.getInt("reimb_id"),
 						rs.getDouble("reimb_amount"),
-						rs.getDate("reimb_submitted"),
+						rs.getString("reimb_submitted"),
 						rs.getString("reimb_description"),
-						rs.getInt("reimb_receipt"),
+						rs.getString("reimb_receipt"),
+						rs.getString("reimb_type"),
 						rs.getInt("reimb_author"),
 						rs.getInt("reimb_resolver"),
 						rs.getInt("reimb_status_id"),
@@ -78,7 +79,7 @@ public void insertReimbursement(Reimbursement newReimbursement) { //This is INSE
 	try(Connection conn = ConnectionFactory.getConnection()){
 		
 		//we'll create a SQL statement using parameters to insert a new Employee
-		String sql = "INSERT INTO reimbursement (reimb_amount, reimb_submitted, reimb_description, reimb_receipt, reimb_type_id, reimb_author) " //creating a line break for readability
+		String sql = "INSERT INTO reimbursement (reimb_amount, reimb_submitted, reimb_description, reimb_receipt, reimb_type, reimb_author) " //creating a line break for readability
 				    + "VALUES (?, ?, ?, ?, ?, ?); "; //these are parameters!! We have to specify the value of each "?"
 		
 		PreparedStatement ps = conn.prepareStatement(sql); //we use PreparedStatements for SQL commands with variables
@@ -86,10 +87,10 @@ public void insertReimbursement(Reimbursement newReimbursement) { //This is INSE
 		//use the PreparedStatement objects' methods to insert values into the query's ?s
 		//the values will come from the Employee object we send in.
 		ps.setDouble(1, newReimbursement.getReimb_amount());
-		ps.setDate(2, newReimbursement.getReimb_submitted());
+		ps.setString(2, newReimbursement.getReimb_submitted());
 		ps.setString(3, newReimbursement.getReimb_description());
-		ps.setInt(4, newReimbursement.getReimb_receipt()); //1 is the first ?, 2 is the second, etc.
-		ps.setInt(5, newReimbursement.getReimb_type_id());
+		ps.setString(4, newReimbursement.getReimb_receipt()); //1 is the first ?, 2 is the second, etc.
+		ps.setString(5, newReimbursement.getReimb_type());
 		ps.setInt(6, newReimbursement.getReimb_author());
 		
 		
@@ -131,9 +132,10 @@ public void updateStatus(Reimbursement reimb_status_id) {
 		Reimbursement updatedStatus = new Reimbursement(
 				rs.getInt("reimb_id"),
 				rs.getDouble("reimb_amount"),
-				rs.getDate("reimb_submitted"),
+				rs.getString("reimb_submitted"),
 				rs.getString("reimb_description"),
-				rs.getInt("reimb_receipt"),
+				rs.getString("reimb_receipt"),
+				rs.getString("reimb_type"),
 				rs.getInt("reimb_author"),
 				rs.getInt("reimb_resolver"),
 				rs.getInt("reimb_status_id"),
@@ -177,9 +179,10 @@ public List<Reimbursement> getReimbursementById(int id) {
 				//we want to use rs.getXYZ for each column in the record
 				rs.getInt("reimb_id"),
 				rs.getDouble("reimb_amount"),
-				rs.getDate("reimb_submitted"),
+				rs.getString("reimb_submitted"),
 				rs.getString("reimb_description"),
-				rs.getInt("reimb_receipt"),
+				rs.getString("reimb_receipt"),
+				rs.getString("reimb_type"),
 				rs.getInt("reimb_author"),
 				rs.getInt("reimb_resolver"),
 				rs.getInt("reimb_status_id"),

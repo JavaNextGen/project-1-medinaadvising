@@ -16,7 +16,7 @@ async function getMyReimbursement() {
     console.log(response);
 
     //control flow for is the request is successful
-    if(response.status === 200){
+    if (response.status === 200) {
 
         let data = await response.json(); //parse the JSON data from the response into a JS object
 
@@ -24,7 +24,7 @@ async function getMyReimbursement() {
         console.log(data);
 
         //For every Employee object we got back (stored in the data variable), put it in the table
-        for(let reimbursement of data){
+        for (let reimbursement of data) {
 
             //create a table row
             let row = document.createElement("tr");
