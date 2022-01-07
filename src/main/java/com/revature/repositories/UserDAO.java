@@ -47,7 +47,7 @@ public List<User> getUsers() { //This will use SQL SELECT functionality
 						rs.getString("f_name"),
 						rs.getString("l_name"),
 						rs.getString("user_email"),
-						rs.getInt("user_roles_id")
+						rs.getString("user_role")
 						);
 				
 				//and populate the ArrayList with each new Employee object
@@ -99,7 +99,7 @@ public List<User> getUserById(int id) {
 				rs.getString("f_name"),
 				rs.getString("l_name"),
 				rs.getString("user_email"),
-				rs.getInt("user_roles_id")
+				rs.getString("user_role")
 				);
 		
 		//and populate the ArrayList with each new Employee object
@@ -125,8 +125,8 @@ public void insertUser(User newUser) { //This is INSERT functionality
 	try(Connection conn = ConnectionFactory.getConnection()){
 		
 		//we'll create a SQL statement using parameters to insert a new Employee
-		String sql = "INSERT INTO users (username, PASSWORD, f_name, l_name, user_email) " //creating a line break for readability
-				    + "VALUES (?, ?, ?, ?, ?); "; //these are parameters!! We have to specify the value of each "?"
+		String sql = "INSERT INTO users (username, PASSWORD, f_name, l_name, user_email, user_role ) " //creating a line break for readability
+				    + "VALUES (?, ?, ?, ?, ?, ?); "; //these are parameters!! We have to specify the value of each "?"
 		
 		PreparedStatement ps = conn.prepareStatement(sql); //we use PreparedStatements for SQL commands with variables
 		
@@ -137,6 +137,7 @@ public void insertUser(User newUser) { //This is INSERT functionality
 		ps.setString(3, newUser.getF_name()); //1 is the first ?, 2 is the second, etc.
 		ps.setString(4, newUser.getL_name());
 		ps.setString(5, newUser.getUser_email());
+		ps.setString(6, newUser.getUser_role());
 		
 		//this executeUpdate() method actually sends and executes the SQL command we built
 		ps.executeUpdate(); //we use executeUpdate() for inserts, updates, and deletes. 
@@ -182,7 +183,7 @@ public List<User> getUserByRole(String role) {
 				rs.getString("f_name"),
 				rs.getString("l_name"),
 				rs.getString("user_email"),
-				rs.getInt("user_roles_id")
+				rs.getString("user_role")
 				);
 		
 		//and populate the ArrayList with each new Employee object
@@ -201,7 +202,7 @@ public List<User> getUserByRole(String role) {
 }
 public User updateUser(User user) {
 	try(Connection conn  = ConnectionFactory.getConnection()) {
-		String sql = "UPDATE users SET username= ?, password = ?, f_name = ?, l_name = ?, user_email = ? WHERE users_id  = ?";
+		String sql = "UPDATE users SET username= ?, password = ?, f_name = ?, l_name = ?, user_email = ?, user_role = ?, WHERE users_id  = ?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		
 		ps.setString(1, user.getUsername());
@@ -209,7 +210,8 @@ public User updateUser(User user) {
 		ps.setString(3, user.getF_name());
 		ps.setString(4, user.getL_name());
 		ps.setString(5, user.getUser_email());
-		ps.setInt(6, user.getUsers_id());
+		ps.setString(6, user.getUser_role());
+		ps.setInt(7, user.getUsers_id());
 		
 		ps.executeUpdate();
 		
@@ -229,7 +231,7 @@ public User updateUser(User user) {
 					rs.getString("f_name"),
 					rs.getString("l_name"),
 					rs.getString("user_email"),
-					rs.getInt("user_roles_id")
+					rs.getString("user_role")
 				);
 		return updatedUser;
 		}

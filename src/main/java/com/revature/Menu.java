@@ -119,14 +119,14 @@ public class Menu {
 				System.out.println("Enter email");
 				String user_email = scan.nextLine();
 				
-				System.out.println("Enter Role Id: 1) Finance Manager 2) Employee");
-				int role_id = scan.nextInt(); //we need nextInt because ID is an int datatype in the database
+				System.out.println("Enter Role: Employee or Finance Manager");
+				String user_role = scan.nextLine(); //we need nextInt because ID is an int datatype in the database
 				scan.nextLine(); //without any nextLine(), your enter keystroke will be grabbed as the next input
 				//so we need nextLine() in order to actually move to the..... NEXT line!
 				
 				//Given all this information, we'll create a new Employee object to send to the service layer
 				//then the service layer will send it to the repository layer.
-				User newUser = new User(username, password, f_name, l_name, user_email, role_id);
+				User newUser = new User(username, password, f_name, l_name, user_email, user_role);
 				
 				//Put the new Employee into the addEmployee() method in the EmployeeService Class
 				us.addUser(newUser);

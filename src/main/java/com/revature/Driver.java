@@ -3,6 +3,7 @@ package com.revature;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import com.revature.controller.AuthController;
 import com.revature.controller.ReimbursementController;
 import com.revature.controller.UsersController;
 import com.revature.util.ConnectionFactory;
@@ -16,6 +17,7 @@ public class Driver {
     	
     	UsersController usc = new UsersController();
     	ReimbursementController rsc = new ReimbursementController();
+    	AuthController ac = new AuthController();
     	
     	try(Connection conn = ConnectionFactory.getConnection()){
 			System.out.println("Connection Successful :)");
@@ -34,7 +36,8 @@ public class Driver {
 					config.enableCorsForAllOrigins();
 				}
 			).start(3000);
-		
+    	
+    	app.post("/login", ac.loginHandler);
 		app.get("/user",  usc.getUsersHandler);
 		app.post("/user", usc.insertUserHandler);
 		app.get("/user/{users_id}", usc.getUsersByIdHandler);
