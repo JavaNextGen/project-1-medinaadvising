@@ -55,7 +55,7 @@ async function getReimbursement() {
             row.appendChild(cell5);
 
             let cell6 = document.createElement("td");
-            cell6.innerHTML = reimbursement.reimb_type_id;
+            cell6.innerHTML = reimbursement.reimb_type;
             row.appendChild(cell6);
 
             let cell7 = document.createElement("td");

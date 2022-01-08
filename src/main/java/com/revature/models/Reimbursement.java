@@ -31,6 +31,7 @@ public class Reimbursement {
         this.reimb_submitted = reimb_submitted;
         this.reimb_description = reimb_description;
         this.reimb_receipt = reimb_receipt;
+        this.reimb_type =  reimb_type;
         this.reimb_author = reimb_author;
         this.reimb_resolver = reimb_resolver;
         this.reimb_status = reimb_status;
@@ -125,12 +126,7 @@ public class Reimbursement {
 	public void setReimb_status_id(int reimb_status_id) {
 		this.reimb_status_id = reimb_status_id;
 	}
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(reimb_id, reimb_amount, reimb_submitted, reimb_description, reimb_receipt, reimb_author, reimb_resolver, reimb_status, reimb_type_id);
-    }
-
+	
 	public String getReimb_type() {
 		return reimb_type;
 	}
@@ -139,8 +135,13 @@ public class Reimbursement {
 		this.reimb_type = reimb_type;
 	}
 
-	
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(reimb_id, reimb_amount, reimb_submitted, reimb_description, reimb_receipt, reimb_author, reimb_resolver, reimb_status, reimb_type_id);
+    }
+
+	
    
     }
 
