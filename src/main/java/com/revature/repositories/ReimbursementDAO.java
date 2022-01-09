@@ -51,6 +51,7 @@ public List<Reimbursement> getReimbursement() { //This will use SQL SELECT funct
 						rs.getString("reimb_description"),
 						rs.getString("reimb_receipt"),
 						rs.getString("reimb_type"),
+						rs.getString("reimb_status"),
 						rs.getInt("reimb_author"),
 						rs.getInt("reimb_resolver"),
 						rs.getInt("reimb_status_id"),
@@ -79,8 +80,8 @@ public void insertReimbursement(Reimbursement newReimbursement) { //This is INSE
 	try(Connection conn = ConnectionFactory.getConnection()){
 		
 		//we'll create a SQL statement using parameters to insert a new Employee
-		String sql = "INSERT INTO reimbursement (reimb_amount, reimb_submitted, reimb_description, reimb_receipt, reimb_type, reimb_author) " //creating a line break for readability
-				    + "VALUES (?, ?, ?, ?, ?, ?); "; //these are parameters!! We have to specify the value of each "?"
+		String sql = "INSERT INTO reimbursement (reimb_amount, reimb_submitted, reimb_description, reimb_receipt, reimb_type, reimb_author, reimb_status) " //creating a line break for readability
+				    + "VALUES (?, ?, ?, ?, ?, ?, ?); "; //these are parameters!! We have to specify the value of each "?"
 		
 		PreparedStatement ps = conn.prepareStatement(sql); //we use PreparedStatements for SQL commands with variables
 		
@@ -92,6 +93,7 @@ public void insertReimbursement(Reimbursement newReimbursement) { //This is INSE
 		ps.setString(4, newReimbursement.getReimb_receipt()); //1 is the first ?, 2 is the second, etc.
 		ps.setString(5, newReimbursement.getReimb_type());
 		ps.setInt(6, newReimbursement.getReimb_author());
+		ps.setString(7, newReimbursement.getReimb_status());
 		
 		
 		//this executeUpdate() method actually sends and executes the SQL command we built
@@ -108,22 +110,22 @@ public void insertReimbursement(Reimbursement newReimbursement) { //This is INSE
 	}
 }
 
-public void updateStatus(Reimbursement reimb_status_id) {
+public void updateStatus(Reimbursement reimb_status) {
 	
 	try(Connection conn = ConnectionFactory.getConnection()){
 		
-		String sql = "update reimbursement set reimb_status_id = ? where reimb_id = ?";
+		String sql = "UPDATE reimbursement SET reimb_status = ? where reimb_id = ?";
 		
 		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setInt(1, reimb_status_id.getReimb_status_id());
-		ps.setInt(2, reimb_status_id.getReimb_id());
+		ps.setString(1, reimb_status.getReimb_status());
+		ps.setInt(2, reimb_status.getReimb_id());
 		
 		ps.executeUpdate();
 		
 		String sqlCheck = "SELECT * FROM reimbursement WHERE reimb_id = ?";
 		PreparedStatement psc = conn.prepareStatement(sqlCheck);
 		
-		psc.setInt(1, reimb_status_id.getReimb_status_id());
+		psc.setInt(1, reimb_status.getReimb_id());
 		
 		ResultSet rs = psc.executeQuery();
 		
@@ -136,6 +138,7 @@ public void updateStatus(Reimbursement reimb_status_id) {
 				rs.getString("reimb_description"),
 				rs.getString("reimb_receipt"),
 				rs.getString("reimb_type"),
+				rs.getString("reimb_status"),
 				rs.getInt("reimb_author"),
 				rs.getInt("reimb_resolver"),
 				rs.getInt("reimb_status_id"),
@@ -183,6 +186,7 @@ public List<Reimbursement> getReimbursementById(int id) {
 				rs.getString("reimb_description"),
 				rs.getString("reimb_receipt"),
 				rs.getString("reimb_type"),
+				rs.getString("reimb_status"),
 				rs.getInt("reimb_author"),
 				rs.getInt("reimb_resolver"),
 				rs.getInt("reimb_status_id"),

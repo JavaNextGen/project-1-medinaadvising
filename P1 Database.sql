@@ -13,7 +13,7 @@ CREATE TABLE users(
 	l_name varchar(100),
 	user_email varchar(150) UNIQUE,
 	user_role TEXT,
-	user_roles_id int REFERENCES roles (role_id) --FOREIGN KEY: note the REFERENCES key
+	user_roles_id int REFERENCES roles (role_id) ON UPDATE CASCADE --FOREIGN KEY: note the REFERENCES key
 );
 
 CREATE TABLE reimbursement_type(
@@ -33,10 +33,11 @@ CREATE TABLE reimbursement(
 	reimb_description varchar(250),
 	reimb_receipt TEXT,
 	reimb_type TEXT,
-	reimb_author int REFERENCES users(users_id),
-	reimb_resolver int REFERENCES users(users_id),
-	reimb_status_id int REFERENCES reimbursement_status(reimb_status_id),
-	reimb_type_id int REFERENCES reimbursement_type(reimb_type_id) 
+	reimb_status TEXT,
+	reimb_author int REFERENCES users(users_id) ON UPDATE CASCADE,
+	reimb_resolver int REFERENCES users(users_id) ON UPDATE CASCADE,
+	reimb_status_id int REFERENCES reimbursement_status(reimb_status_id) ON UPDATE CASCADE,
+	reimb_type_id int REFERENCES reimbursement_type(reimb_type_id) ON UPDATE CASCADE 
 );
 
 DROP TABLE reimbursement CASCADE;
@@ -67,9 +68,9 @@ VALUES ('PENDING'),
 		('APPROVED'),
 		('DENIED');
 	
-SELECT * FROM reimbursement_type;
+SELECT * FROM reimbursement_status;
 
-INSERT INTO reimbursement (reimb_amount, reimb_submitted, reimb_description, reimb_receipt, reimb_type, reimb_author)
+INSERT INTO reimbursement (reimb_amount, reimb_submitted, reimb_description, reimb_receipt, reimb_type, reimb_author, reimb_status)
 VALUES (25.50, '2016-06-22 19:10:25-07', 'Eating out', 1, 1);
 
 

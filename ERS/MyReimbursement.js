@@ -7,7 +7,6 @@ document.getElementById("getMyReimbsButton").addEventListener("click", getMyReim
 
 //remember, async returns a promise (which fetch request return)
 async function getMyReimbursement(id) {
-    
     //we will send a fetch request to get our employee data
     //by default, fetch requests send GET requests
     let response = await fetch(url + "reimbursement/" + id);

@@ -1,10 +1,6 @@
 package com.revature.models;
 
-import java.sql.Date;
-import java.sql.Timestamp;
 import java.util.Objects;
-
-import org.postgresql.util.PGbytea;
 
 public class Reimbursement {
 	private int reimb_id;
@@ -13,18 +9,19 @@ public class Reimbursement {
     private String reimb_description;
     private String reimb_receipt;
     private String reimb_type;
+    private String reimb_status;
     private int reimb_author;
     private int reimb_resolver;
-    private int reimb_status;
-    private int reimb_type_id;
     private int reimb_status_id;
+    private int reimb_type_id;
+    
     
 
     public Reimbursement() {
         super();
     }
 
-    public Reimbursement(int reimb_id, double reimb_amount, String reimb_submitted, String reimb_description, String reimb_receipt, String reimb_type, int reimb_author, int reimb_resolver, int reimb_status, int reimb_type_id) {
+    public Reimbursement(int reimb_id, double reimb_amount, String reimb_submitted, String reimb_description, String reimb_receipt, String reimb_type, String reimb_status, int reimb_author, int reimb_resolver, int reimb_status_id, int reimb_type_id) {
         super();
         this.reimb_id = reimb_id;
         this.reimb_amount = reimb_amount;
@@ -32,9 +29,10 @@ public class Reimbursement {
         this.reimb_description = reimb_description;
         this.reimb_receipt = reimb_receipt;
         this.reimb_type =  reimb_type;
+        this.reimb_status = reimb_status;
         this.reimb_author = reimb_author;
         this.reimb_resolver = reimb_resolver;
-        this.reimb_status = reimb_status;
+        this.reimb_status_id = reimb_status_id;
         this.reimb_type_id = reimb_type_id;
         
     }
@@ -103,11 +101,11 @@ public class Reimbursement {
     public void setReimb_resolver(int reimb_resolver) {
         this.reimb_resolver = reimb_resolver;
     }
-    public int getReimb_status() {
+    public String getReimb_status() {
         return reimb_status;
     }
 
-    public void setReimb_status(int reimb_status) {
+    public void setReimb_status(String reimb_status) {
         this.reimb_status = reimb_status;
     }
     public int getReimb_type_id() {
@@ -118,10 +116,6 @@ public class Reimbursement {
         this.reimb_type_id = reimb_type_id;
     }
     
-    public int getReimb_status_id() {
-		// TODO Auto-generated method stub
-		return reimb_status;
-	}
 
 	public void setReimb_status_id(int reimb_status_id) {
 		this.reimb_status_id = reimb_status_id;

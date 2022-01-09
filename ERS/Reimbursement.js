@@ -5,21 +5,23 @@ document.getElementById("reimbButton").addEventListener("click", registerFunctio
 async function registerFunction() {
 
     //gather the user inputs from the login inputs
+    let Reimb_author = document.getElementById("reimb_author").value;
     let Reimb_amount = document.getElementById("reimb_amount").value;
     let Reimb_submitted = document.getElementById("reimb_submitted").value;
     let Reimb_description = document.getElementById("reimb_description").value;
     let Reimb_receipt = document.getElementById("reimb_receipt").value;
     let Reimb_type = document.getElementById("reimb_type").value;
-    let Reimb_author = document.getElementById("reimb_author").value;
+    let Reimb_status = document.getElementById("reimb_status").value;
 
     //we want to send the user/pass as JSON, so we need a JS object to send
     let reimbursement = {
+        reimb_author: Reimb_author,
         reimb_amount: Reimb_amount,
         reimb_submitted: Reimb_submitted,
         reimb_description: Reimb_description,
         reimb_receipt: Reimb_receipt,
         reimb_type: Reimb_type,
-        reimb_author: Reimb_author
+        reimb_status: Reimb_status
     }
     //This object will reflect our DTO in Java... This is the data we want to transfer!
 

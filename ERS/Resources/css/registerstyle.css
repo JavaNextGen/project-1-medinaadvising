@@ -102,3 +102,7 @@ form div {
   a {
     text-decoration: none;
   }
+
+  #status {
+    margin-top: 10px;
+  }

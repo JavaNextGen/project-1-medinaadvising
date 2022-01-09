@@ -29,6 +29,10 @@
             <h2>Please Enter Your Reimbursement Information Below</h2>
             <form>
                 <div>
+                    <label for="reimb_author">User ID:</label>
+                    <input type="text" id="reimb_author" name="reimb_author" placeholder="User ID"><br>
+                </div> 
+                <div>
                     <label for="reimb_amount">Reimbursement Amount:</label>
                     <input type="text" id="reimb_amount" name="reimb_amount" placeholder="Reimbursement Amount"><br>
                 </div>
@@ -45,7 +49,7 @@
                     <select name="reimb_receipt" id="reimb_receipt">
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
-                    </select><br>   
+                    </select><br> 
                 </div>
                 <div>
                     <label for="reimb_type">Reimbursement Type:</label>
@@ -55,10 +59,11 @@
                         <option value="FOOD">FOOD</option>
                         <option value="OTHER">OTHER</option>
                     </select><br>
-                <div>
-                        <label for="reimb_author">User ID:</label>
-                        <input type="text" id="reimb_author" name="reimb_author" placeholder="User ID"><br>
-                </div> 
+                <div id="status">
+                        <label for="reimb_status">Current Status:</label>
+                        <select name="reimb_status" id="reimb_status">
+                            <option value="PENDING">PENDING</option>
+                        </select><br>   
                 </div>
                 <div id="submit">
                     <!--Register Button-->

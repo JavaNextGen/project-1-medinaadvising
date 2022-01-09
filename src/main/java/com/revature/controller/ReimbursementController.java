@@ -61,9 +61,9 @@ public class ReimbursementController {
 			
 			String body = ctx.body();
 			
-			Reimbursement status = gson.fromJson(body, Reimbursement.class);
+			Reimbursement reimb_status = gson.fromJson(body, Reimbursement.class);
 			
-			List<Reimbursement> UpdateStatus = rs.getReimbursementById(reimb_id);
+			Reimbursement UpdateStatus = rs.updateStatus(reimb_status);
 			
 			String JSONStatus = gson.toJson(UpdateStatus);
 			
