@@ -39,6 +39,12 @@
     <div class="body">
       <br>
       <br>
+      <div>
+        <label for="{reimb_author}">User ID:</label>
+        <input type="text" id="{reimb_author}" oninput="getMyReimbursement(this.value)" placeholder="User ID"><br>
+      </div>
+      <br>
+      <br>
       <div id="table-row" class="row" align="center">
         <table>
           <thead>
@@ -58,7 +64,7 @@
         </table>
       </div>
 
-      <button id="getMyReimbsButton" class=button>My Reimbursements</button>
+      <button id="getMyReimbsButton"  class=button>My Reimbursements</button>
 
       <br />
       <br />
