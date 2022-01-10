@@ -58,8 +58,12 @@ async function getMyReimbursement(id) {
             row.appendChild(cell6);
 
             let cell7 = document.createElement("td");
-            cell7.innerHTML = reimbursement.reimb_author;
+            cell7.innerHTML = reimbursement.reimb_status;
             row.appendChild(cell7);
+
+            let cell8 = document.createElement("td");
+            cell8.innerHTML = reimbursement.reimb_author;
+            row.appendChild(cell8);
 
             //append the tr called row that we created in the for loop to the table body
             //a new row will be appended for every employee object that comes in
