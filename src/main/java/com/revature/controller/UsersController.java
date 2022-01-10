@@ -13,7 +13,7 @@ public class UsersController {
 		UserService us = new UserService();
 		
 		public Handler getUsersHandler = (ctx) -> {
-			if(ctx.req.getSession() !=null) {
+			if(ctx.req.getSession(true) !=null) {
 				List<User> allUsers = us.getUsers();
 				
 				Gson gson = new Gson();
@@ -30,7 +30,7 @@ public class UsersController {
 		};
 
 		public Handler insertUserHandler = (ctx) ->{
-			if(ctx.req.getSession() !=null) {
+			if(ctx.req.getSession(true) !=null) {
 				
 				String body = ctx.body();
 				
@@ -52,7 +52,7 @@ public class UsersController {
 		
 		
 		public Handler getUsersByIdHandler = (ctx) -> {
-			if(ctx.req.getSession() !=null) {
+			if(ctx.req.getSession(true) !=null) {
 				
 				int users_id = Integer.parseInt(ctx.pathParam("users_id"));
 				
@@ -76,7 +76,7 @@ public class UsersController {
 		
 		
 		public Handler updateUsersHandler = (ctx) -> {
-			if(ctx.req.getSession() !=null) {
+			if(ctx.req.getSession(true) !=null) {
 				
 				
 				int users_id = Integer.parseInt(ctx.pathParam("users_id"));
@@ -101,7 +101,7 @@ public class UsersController {
 			}
 		};
 		public Handler deleteUsersHandler = (ctx) -> {
-			if(ctx.req.getSession() !=null) {
+			if(ctx.req.getSession(true) !=null) {
 				
 				int users_id = Integer.parseInt(ctx.pathParam("users_id"));
 				

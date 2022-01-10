@@ -7,8 +7,9 @@ document.getElementById("getStatusButton").addEventListener("click", statusFunct
 async function statusFunction(id) {
 
     //gather the user inputs from the login inputs
-    let Reimb_id = document.getElementById("reimb_id").value;
     let Reimb_status = document.getElementById("reimb_status").value;
+    let Reimb_id = document.getElementById("reimb_id").value;
+    
     
 
     //we want to send the user/pass as JSON, so we need a JS object to send
@@ -23,9 +24,10 @@ async function statusFunction(id) {
     //fetch request to the server
     //remember the second parameter fetch can take? It's essentially for configuring our fetch request
     //fetch sends a GET by default, but this seconds parameter can change that and more!
-    let response = await fetch(url + "reimbursement" + id {
+    
+    let response = await fetch(url + "reimbursement/" + id, {
 
-        method: "POST", //send a POST request (would be a GET if we didn't do this...)
+        method: 'PUT', //send a POST request (would be a GET if we didn't do this...)
         body: JSON.stringify(status), //turn our user object into JSON
         //this last line will ensure that the cookie is captured (so that we can have a user session)
         //future fetches will also require this "include" value to send the cookie back

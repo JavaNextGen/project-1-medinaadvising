@@ -26,7 +26,7 @@ public class AuthController {
 		if(as.login(LDTO.getUsername(), LDTO.getPassword())) {
 			
 			//create a user session so that they can access the applications other functionalities
-			ctx.req.getSession(); //req is a "Request Object", we establish sessions through it
+			ctx.req.getSession(true); //req is a "Request Object", we establish sessions through it
 			
 			//return a successful status code 
 			ctx.status(202); //202 - accepted. (but you could use any 200 level status code)

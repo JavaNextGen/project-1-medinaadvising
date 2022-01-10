@@ -15,7 +15,7 @@ public class ReimbursementController {
 	ReimbursementService rs = new ReimbursementService();
 	
 	public Handler getReimbursementHandler = (ctx) -> {
-		if(ctx.req.getSession() !=null) {
+		if(ctx.req.getSession(true) !=null) {
 			List<Reimbursement> allReimbursement = rs.getReimbursement();
 			
 			Gson gson = new Gson();
@@ -32,7 +32,7 @@ public class ReimbursementController {
 	};
 	
 	public Handler insertReimbursementHandler = (ctx) ->{
-		if(ctx.req.getSession() !=null) {
+		if(ctx.req.getSession(true) !=null) {
 			
 			String body = ctx.body();
 			
@@ -52,7 +52,7 @@ public class ReimbursementController {
 	};
 	
 	public Handler updateReimbursementHandler = (ctx) -> {
-		if(ctx.req.getSession() !=null) {
+		if(ctx.req.getSession(true) !=null) {
 			
 			
 			int reimb_id = Integer.parseInt(ctx.pathParam("reimb_id"));
@@ -78,7 +78,7 @@ public class ReimbursementController {
 	};
 	
 	public Handler getReimbursementByIdHandler = (ctx) -> {
-		if(ctx.req.getSession() !=null) {
+		if(ctx.req.getSession(true) !=null) {
 			
 			int reimb_author = Integer.parseInt(ctx.pathParam("reimb_author"));
 			
