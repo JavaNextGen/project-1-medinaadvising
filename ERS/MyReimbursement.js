@@ -1,14 +1,15 @@
 const url = "http://localhost:3000/" //putting our base URL in a variable for cleaner code below
 //eventually, we'll use this in our fetch requests and make calls to our server by appending endpoints
-document.getElementById("{reimb_author}").innerHTML = id;
+//document.getElementById("{reimb_author}").innerHTML = id;
 //add eventListeners to our buttons to give them functionality
 document.getElementById("getMyReimbsButton").addEventListener("click", getMyReimbursement);
 //login button listener goes here
 
 //remember, async returns a promise (which fetch request return)
-async function getMyReimbursement(id) {
+async function getMyReimbursement() {
     //we will send a fetch request to get our employee data
     //by default, fetch requests send GET requests
+    let id = document.getElementById("{reimb_author}").value;
     let response = await fetch(url + "reimbursement/" + id);
 
     //logging the response in the console just to see the response object
