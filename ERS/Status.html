@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ERS</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,500,700|Oswald:300,400,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../ERS/Resources/css/registerstyle.css">
@@ -24,51 +26,33 @@
         </div>
     </header>
 
-
-    <!-- Content Section -->
-
     <div class="content">
-
-        <!-- Content Header -->
 
         <div class="header">
             <h1>Reimbursement Status</h1>
         </div>
 
-        <!-- Content Body -->
         <section class="user_details">
-            <div>
-                <br>
-                <br>
+            <br>
+            <br>
+            <h2>Please Enter Your Information Below</h2>
+            <form>
                 <div>
-                    <label for="{reimb_id}">Reimbursement ID:</label>
-                    <input type="text" id="{reimb_id}"  placeholder="Reimbursement ID">
+                    <label for="reimb_status">Updated Status:</label>
+                    <input type="text" id="reimb_status" name="reimb_status" placeholder="APPROVED or DENIED"><br>
                 </div>
-                <br>
-                <br>
-                <h2>Please Enter Your Information Below</h2>
-                <form>
-                    <div>
-                        <label for="reimb_status">Updated Status:</label>
-                        <input type="text" id="reimb_status" name="reimb_status" placeholder="APPROVED or DENIED"><br>
-                    </div>
-                    <div>
-                        <label for="reimb_id">Reimbursement ID:</label>
-                        <input type="text" id="reimb_id" name="reimb_id" placeholder="ID To Change"><br>
-                    </div>
+                <div>
+                    <label for="reimb_id">Reimbursement ID:</label>
+                    <input type="text" id="reimb_id" name="reimb_id" placeholder="ID To Change"><br>
+                </div>
 
-                    <div id="register">
-                        <button id="getStatusButton" class="button">Update Status</button>
-                    </div>
+                <div id="register">
+                    <button id="statusButton" onclick="statusFunction()" class="button">Update Status</button>
+                </div>
 
-                </form>
+            </form>
         </section>
-        <br />
-        <br />
-
     </div>
-    
-
     <script src="Status.js"></script>
 </body>
 

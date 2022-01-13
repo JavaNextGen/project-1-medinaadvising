@@ -45,4 +45,8 @@ UserDAO eDAO = new UserDAO(); //so that I can use the methods from the EmployeeD
 	public boolean deleteUser(int users_id) {
 		return eDAO.deleteUser(users_id);
 	}
+	public Object getByUsername(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

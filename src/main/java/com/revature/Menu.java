@@ -75,33 +75,32 @@ public class Menu {
 				
 				break;
 			}
-			case "3":{
-				System.out.println("Enter the amount for reimbursement");
-				double reimb_amount = scan.nextDouble();
-				scan.nextLine();
-				
-				System.out.println("Enter the description of reimbursement");
-				String reimb_description = scan.nextLine();
-				
-				System.out.println("Did you attach receipt: 1) Yes 2) No");
-				int reimb_receipt = scan.nextInt();
-				scan.nextLine();
-				
-				System.out.println("Select the type of expense: 1) LODGING 2) TRAVEL 3) FOOD 4) OTHER");
-				int reimb_type_id = scan.nextInt();
-				scan.nextLine();
-				
-				//without any nextLine(), your enter keystroke will be grabbed as the next input
-				//so we need nextLine() in order to actually move to the..... NEXT line!
-				
-				//Given all this information, we'll create a new Employee object to send to the service layer
-				//then the service layer will send it to the repository layer.
-				Reimbursement newReimbursement = new Reimbursement(reimb_amount, reimb_description, reimb_receipt, reimb_type_id);
-				
-				//Put the new Employee into the addEmployee() method in the EmployeeService Class
-				ri.addReimbursement(newReimbursement);
-				break;
-			}
+			/*
+			 * case "3":{ System.out.println("Enter the amount for reimbursement"); double
+			 * reimb_amount = scan.nextDouble(); scan.nextLine();
+			 * 
+			 * System.out.println("Enter the description of reimbursement"); String
+			 * reimb_description = scan.nextLine();
+			 * 
+			 * System.out.println("Did you attach receipt: 1) Yes 2) No"); int reimb_receipt
+			 * = scan.nextInt(); scan.nextLine();
+			 * 
+			 * System.out.
+			 * println("Select the type of expense: 1) LODGING 2) TRAVEL 3) FOOD 4) OTHER");
+			 * int reimb_type = scan.nextInt(); scan.nextLine();
+			 * 
+			 * //without any nextLine(), your enter keystroke will be grabbed as the next
+			 * input //so we need nextLine() in order to actually move to the..... NEXT
+			 * line!
+			 * 
+			 * //Given all this information, we'll create a new Employee object to send to
+			 * the service layer //then the service layer will send it to the repository
+			 * layer. Reimbursement newReimbursement = new Reimbursement(reimb_amount,
+			 * reimb_description, reimb_receipt, reimb_type);
+			 * 
+			 * //Put the new Employee into the addEmployee() method in the EmployeeService
+			 * Class ri.addReimbursement(newReimbursement); break; }
+			 */
 			case "2":{
 				//we need to prompt the user for the employee's name, and their role_id
 				System.out.println("Enter username");
