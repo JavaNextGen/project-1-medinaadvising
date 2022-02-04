@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERS</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,500,700|Oswald:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../ERS/Resources/css/registerstyle.css">
+
+
+
+</head>
+
+<body>
+    <header>
+        <div class="topnav">
+            <a class="active" href="index.html">Home</a>
+            <a href="Users.html">All Users</a>
+            <a href="Reimbursement.html">Submit Reimbursement</a>
+            <a href="Status.html">Update Reimbursement</a>
+            <a href="AllReimb.html">Reimbursements</a>
+            <a href="MyReimbursement.html">My Reimbursements</a>
+            <a href="Register.html">New User</a>
+        </div>
+    </header>
+
+    <div class="content">
+
+        <div class="header">
+            <h1>Reimbursement Status</h1>
+        </div>
+
+        <section class="user_details">
+            <br>
+            <br>
+            <h2>Please Enter Your Information Below</h2>
+            <form>
+                <div>
+                    <label for="reimb_status">Updated Status:</label>
+                    <input type="text" id="reimb_status" name="reimb_status" placeholder="APPROVED or DENIED"><br>
+                </div>
+                <div>
+                    <label for="reimb_id">Reimbursement ID:</label>
+                    <input type="text" id="reimb_id" name="reimb_id" placeholder="ID To Change"><br>
+                </div>
+
+                <div id="register">
+                    <button id="statusButton" onclick="statusFunction()" class="button">Update Status</button>
+                </div>
+
+            </form>
+        </section>
+    </div>
+    <script src="Status.js"></script>
+</body>
+
+</html>
